@@ -18,7 +18,7 @@ class App < Sinatra::Base
   end
 
   post '/add_submit' do
-    Bookmarks.add(params[:url])
+    Bookmarks.add(params[:url], params[:title])
     session[:url] = params[:url]
     redirect '/'
   end

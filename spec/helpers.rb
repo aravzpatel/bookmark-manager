@@ -1,6 +1,6 @@
 def amend_db(insert_sql)
   begin
-    con = PG.connect :dbname => 'bookmark_manager_test', :user => 'postgres', :password => '123'  
+    con = PG.connect :dbname => 'bookmark_manager_test', :user => 'arav'
     rs = con.exec insert_sql
   
   rescue PG::Error => e

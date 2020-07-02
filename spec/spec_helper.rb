@@ -36,7 +36,7 @@ RSpec.configure do |config|
   
   config.before(:each) do
     amend_db("TRUNCATE bookmarks")
-    amend_db("INSERT INTO bookmarks (url) VALUES ('http://www.reddit.com'), ('http://www.torbrowser.com')")
+    amend_db("INSERT INTO bookmarks (url, title) VALUES ('http://www.reddit.com', 'Reddit'), ('http://www.torbrowser.com', 'Tor')")
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

@@ -5,6 +5,7 @@ feature 'Add New Bookmark' do
     visit '/'
     click_link 'Add New Bookmark!'
     fill_in 'url', with: 'http://www.testbookmark.com'
+    fill_in 'title', with: 'this is a test'
     click_button 'Add Bookmark'
   end  
   scenario 'Book added successfully' do
@@ -12,6 +13,6 @@ feature 'Add New Bookmark' do
   end
   scenario 'A bookmark can be displayed after it is added' do
     visit '/bookmarks'
-    expect(page).to have_content('http://www.testbookmark.com')
+    expect(page).to have_link('this is a test')
   end
 end
