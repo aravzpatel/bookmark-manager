@@ -4,9 +4,9 @@ describe Bookmarks do
       it "should return the bookmark as an object" do
         bookmark = Bookmarks.find("Tor")
 
-        expect(bookmark.first).to be_a Bookmarks
-        expect(bookmark.first.title).to eq("Tor")
-        expect(bookmark.first.url).to eq("http://www.torbrowser.com")
+        expect(bookmark).to be_a Bookmarks
+        expect(bookmark.title).to eq("Tor")
+        expect(bookmark.url).to eq("http://www.torbrowser.com")
       end
     end
   end

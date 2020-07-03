@@ -17,28 +17,23 @@ class Bookmarks
     rs.map do |bookmark|
       Bookmarks.new(id: bookmark["id"], url: bookmark["url"], title: bookmark["title"])
     end
-    
-    # array =[]
-
-    # rs.each do |row|
-    #   array << {url: row["url"], title: row["title"] }
-    # end
-
-    # db_con_cleanup(rs, con)
-
   end
 
   def self.add(url, title)
     con = db_connect
     rs = con.exec "INSERT INTO bookmarks (url, title) VALUES ('#{url}', '#{title}')"
-    # db_con_cleanup(rs, con)
   end
 
   def self.find(input)
     con = db_connect
     rs = con.exec "SELECT * FROM bookmarks WHERE title='#{input}'"
 
-    rs.map {|bookmark| Bookmarks.new(id: bookmark["id"], url: bookmark["url"], title: bookmark["title"])}
+    rs.map {|bookmark| Bookmarks.new(id: bookmark["id"], url: bookmark["url"], title: bookmark["title"])}.last
+  end
+
+  def self.delete(input)
+    con = db_connect
+    rs = con.exec "DELETE FROM bookmarks WHERE id='#{input}'"
   end
 
   private

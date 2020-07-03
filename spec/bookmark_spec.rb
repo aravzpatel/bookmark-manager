@@ -18,4 +18,15 @@ describe Bookmarks do
       expect(Bookmarks.all.last.url).to eq 'www.testurl.com' 
     end
   end
+
+  describe '#self.delete' do
+    it "deletes bookmark from the database" do
+      Bookmarks.add("www.testurl.com", "test")
+      bookmark = Bookmarks.find("test")
+      Bookmarks.delete(bookmark.id)
+
+      expect(Bookmarks.all).not_to eql("test")
+      expect(Bookmarks.all).not_to eql("www.testurl.com")
+    end
+  end
 end

@@ -27,6 +27,16 @@ class App < Sinatra::Base
     erb :add
   end
 
+  get '/delete' do
+    @bookmarks = Bookmarks.all
+    erb :delete
+  end
+
+  post '/bookmarks/:id' do
+    Bookmarks.delete(params[:id])
+    redirect '/bookmarks'
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $PROGRAM_NAME
 end
